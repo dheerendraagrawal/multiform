@@ -9,14 +9,21 @@ import { DataServiceService } from '../../services/data-service.service';
 export class SummaryPageComponent implements OnInit {
 
   keys;
-  formData;
+  data = [];
 
   constructor(
     private dataService: DataServiceService) { }
 
   ngOnInit(): void {
-    this.keys =  Object.keys(this.dataService.getformData());
-    this.formData = this.dataService.getformData();
+    const form = this.dataService.getformData();
+    this.keys =  Object.keys(form).forEach(k => {
+      Object.keys(form[k]).forEach((k1) => {
+        let obj = {};
+        obj['key'] = k1;
+        obj['value'] = form[k][k1];
+        this.data.push(obj);
+      });
+    });
   }
 
 }
