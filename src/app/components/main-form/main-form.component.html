@@ -1,1 +1,44 @@
-<p>main-form works!</p>
+<!-- <form [formGroup] = 'form'> -->
+    <mat-horizontal-stepper labelPosition="bottom">
+        <!-- Project Details -->
+        <mat-step label = 'Project Details'>
+           <app-project-details [form] = "form.get('projectDetails')"></app-project-details>
+           <div style="text-align: right; margin-top: 10px;">
+                <button mat-raised-button color="warn" matStepperNext>Next</button>
+           </div>
+        </mat-step>
+    
+        <!-- Project Gallery -->
+        <mat-step label = 'Project Gallery'>
+            <app-project-gallery [form] = "form.get('projectGallery')"></app-project-gallery>
+            <div style="text-align: right; margin-top: 10px;">
+                <button mat-raised-button color="warn" matStepperNext>Next</button>
+           </div>
+        </mat-step>
+    
+        <!-- Project Costs -->
+        <mat-step label = 'Project Costs'>
+            <app-project-costs [form] = "form.get('projectCosts')"></app-project-costs>
+            <div style="text-align: right; margin-top: 10px;">
+                <button mat-raised-button color="warn" matStepperNext>Next</button>
+           </div>
+        </mat-step>
+    
+        <!-- Project Includes -->
+        <mat-step label = 'Project Includes'>
+            <app-project-includes [form] = "form.get('projectIncludes')"></app-project-includes>
+            <div style="text-align: right; margin-top: 10px;">
+                <button mat-raised-button color="warn" matStepperNext>Next</button>
+           </div>
+        </mat-step>
+    
+        <!-- Project Dates -->
+        <mat-step label = 'Project Dates'>
+            <app-project-dates [form] = "form.get('projectDates')"></app-project-dates>
+            <div style="text-align: right; margin-top: 10px;">
+                <button mat-raised-button color="green" style="background-color: green;" (click) = 'navigate()'>Finish</button>
+           </div>
+        </mat-step>
+    
+    </mat-horizontal-stepper>
+<!-- </form> -->

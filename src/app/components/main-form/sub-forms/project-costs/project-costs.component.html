@@ -1,1 +1,61 @@
-<p>project-costs works!</p>
+<div>
+    <form [formGroup] = 'form'>
+        <div style="margin-bottom: 20px;">
+            <h2>Project Costs</h2>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div>
+                    <div>
+                       <mat-form-field>
+                           <mat-label>Project Name</mat-label>
+                           <mat-select formControlName = 'projectName'>
+                               <mat-option *ngFor = 'let item of projectList' [value] = 'item.value'>
+                                   {{item.viewValue}}
+                                </mat-option>
+                           </mat-select>
+                       </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <div>
+                    <table mat-table [dataSource] = 'dataSource' width = '100%'>
+
+                        <ng-container matColumnDef = 'duration'>
+                            <th mat-header-cell *matHeaderCellDef>Project Duration</th>
+                            <td mat-cell *matCellDef = 'let item'>
+                                <mat-form-field>
+                                    <input type = 'number' matInput [(ngModel)] = 'item.duration' [ngModelOptions] = '{ standalone: true }' placeholder="Enter Weeks">
+                                </mat-form-field>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef = 'cost'>
+                            <th mat-header-cell *matHeaderCellDef>Project Cost</th>
+                            <td mat-cell *matCellDef = 'let item'>
+                                <mat-form-field>
+                                    <input type = 'number' matInput [(ngModel)] = 'item.cost' [ngModelOptions] = '{ standalone: true }' placeholder="Enter Cost">
+                                </mat-form-field>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef = 'action'>
+                            <th mat-header-cell *matHeaderCellDef></th>
+                            <td mat-cell *matCellDef = 'let item; let i= index'>
+                               <button *ngIf = 'dataSource.data.length > 1 && i > 0' mat-raised-button color="warn" (click) = 'removeRow(i)'>Delete</button>
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef = 'columnNames'></tr>
+                        <tr mat-row *matRowDef = 'let row; let i = index; columns: columnNames'></tr>
+                    </table>
+                </div>
+                <div>
+                    <button style="width: 100%;" mat-raised-button color="warn" (click) = 'addRow()'>Add Row</button>
+                </div>
+            </div>
+        </div> 
+    </form>
+</div>

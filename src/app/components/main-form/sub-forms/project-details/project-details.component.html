@@ -1,1 +1,99 @@
-<p>project-details works!</p>
+<div>
+    <form [formGroup] = 'form'>
+        <div style="margin-bottom: 20px;">
+            <h2>Project Details</h2>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div>
+                    <div>
+                       <mat-form-field>
+                           <mat-label>Organization</mat-label>
+                           <mat-select formControlName = 'organization'>
+                               <mat-option *ngFor = 'let item of organizationList' [value] = 'item.value'>
+                                   {{item.viewValue}}
+                                </mat-option>
+                           </mat-select>
+                       </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Category</mat-label>
+                            <mat-select formControlName = 'category'>
+                                <mat-option *ngFor = 'let item of categoryList' [value] = 'item.value'>
+                                    {{item.viewValue}}
+                                 </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Activity</mat-label>
+                            <mat-select  formControlName = 'activity'>
+                                <mat-option *ngFor = 'let item of activityList' [value] = 'item.value'>
+                                    {{item.viewValue}}
+                                 </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div>
+                    <div>
+                        
+                        <mat-form-field>
+                            <mat-label>Title</mat-label>
+                            <input matInput formControlName = 'title'>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div>
+                    <div>
+
+                        <mat-form-field>
+                            <mat-label>Minimum Age</mat-label>
+                            <input matInput formControlName = 'minimumAge'>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Maximum Age</mat-label>
+                            <input matInput formControlName = 'maximumAge'>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Overview Description</mat-label>
+                            <textarea matInput  formControlName = 'overview'></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </form>
+</div>
